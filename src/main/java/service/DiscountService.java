@@ -32,11 +32,16 @@ public class DiscountService {
 		return discountRepository.findById(id);
 	}
 
-	public Discount saveDiscount(Discount discount) {
-		return discountRepository.save(discount);
+	public Discount saveDiscount(String code, int value) {
+		Discount dc = new Discount(code, value);
+		return discountRepository.save(dc);
 	}
 
 	public void deleteDiscount(String id) {
 		discountRepository.deleteById(id);
+	}
+
+	public void updateValue(String code, int newValue) {
+		discountRepository.updateVauleOfCode(code, newValue);
 	}
 }

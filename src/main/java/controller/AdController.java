@@ -66,17 +66,11 @@ public class AdController {
 		return discountService.getDiscountById(id).orElse(null);
 	}
 
-	@PostMapping
-	@ResponseBody
-	public Discount createDiscount(@RequestBody Discount discount) {
-		return discountService.saveDiscount(discount);
-	}
-
 //	@PutMapping("/{id}")
-	@PostMapping(value = "them")
+	@GetMapping(value = "them")
 //	@ResponseBody
-	public String updateDiscount(@ModelAttribute("discount") Discount discount, RedirectAttributes redirectAttributes) {
-		discountService.saveDiscount(discount);
+	public String createDiscount(@RequestParam("code") String code, @RequestParam("ValueOfCode") int value) {
+		discountService.saveDiscount(code, value);
 		return "redirect:/admin";
 	}
 
@@ -87,19 +81,17 @@ public class AdController {
 		discountService.deleteDiscount(code);
 		return "redirect:/admin";
 	}
-	
+
 //	action=xoataikhoan&username=sad
 	@GetMapping("/xoataikhoan")
-	public String deleteAccount(@RequestParam String username,RedirectAttributes redirectAttributes) {
+	public String deleteAccount(@RequestParam String username, RedirectAttributes redirectAttributes) {
 		accountService.deleteAccount(username);
 		return "redirect:/admin";
 	}
+
 	@GetMapping("/setrole")
-	public String setRole(@RequestParam String username,RedirectAttributes redirectAttributes) {
+	public String setRole(@RequestParam String username, RedirectAttributes redirectAttributes) {
 		Account acc = accountService.getAcc(username);
-//		if(acc.getRole()==0) {
-//			acc.setRole(1);
-//		}
 		switch (acc.getRole()) {
 		case 1:
 			acc.setRole(0);
@@ -110,7 +102,13 @@ public class AdController {
 		default:
 			break;
 		}
-		accountService.setRole(username,acc.getRole());
+		accountService.setRole(username, acc.getRole());
+		return "redirect:/admin";
+	}
+
+	@GetMapping("/suamagiamgia")
+	public String editValueDiscount(@RequestParam("code") String code, @RequestParam("ValueOfCode") int valueOfCode) {
+		discountService.updateValue(code, valueOfCode);
 		return "redirect:/admin";
 	}
 }

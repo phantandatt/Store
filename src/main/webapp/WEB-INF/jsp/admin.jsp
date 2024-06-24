@@ -153,11 +153,7 @@
 										</button>
 									</div>
 									<div class="modal-body">
-										<!-- <form class="form-user" method="get" action="admin">
-											<div class="form-group">
-												<input type="hidden" class="form-control" name="action"
-													placeholder="" value="themmagiamgia">
-											</div>
+										<form class="form-user" method="get" action="admin/them">
 
 											<div class="form-group">
 												<label>Mã giảm giá *</label> <input type="text"
@@ -173,14 +169,10 @@
 													mã giảm giá</button>
 											</div>
 
-										</form> -->
+										</form>
 
-										<%-- <form:form method="post" action="admin/them"
+										<%-- <form:form method="get" action="admin/them"
 											modelAttribute="discount" id="frmDiscount" name="frmDiscount">
-											<div class="form-group">
-												<input type="hidden" class="form-control" name="action"
-													placeholder="" value="themmagiamgia">
-											</div>
 											<div class="form-group">
 												<label>Mã giảm giá *</label>
 												<form:input path="code" id="code" />
@@ -250,7 +242,8 @@
 													</button>
 												</div>
 												<div class="modal-body">
-													<form class="form-user" method="get" action="admin">
+													<form class="form-user" method="get"
+														action="admin/suamagiamgia">
 														<div class="form-group">
 															<input type="hidden" class="form-control" name="action"
 																placeholder="" value="suamagiamgia">
